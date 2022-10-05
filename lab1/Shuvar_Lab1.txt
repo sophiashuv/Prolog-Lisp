@@ -1,0 +1,223 @@
+
+/* facts */
+% male(x) :- x is a man
+male(antony_shuvar).
+male(mykola_korotash).
+male(oleksiy_tomashivskiy).
+male(mykola_klopotiuk).
+
+male(roman_shuvar).
+male(mykhailo_shuvar).
+male(bogdan_shuvar).
+male(zenyk_kuziy).
+male(boyan_tomashivskiy).
+male(borys_mospan).
+male(viktor_klopotiuk).
+male(bogdan_mykytyk).
+male(volodimyr_klopotiuk).
+
+male(antony2_shuvar).
+male(orest_shuvar).
+male(anatoliy_shevtsov).
+male(volodimyr_beliy).
+male(vitaliy_mykytyk).
+
+male(nazariy_beliy).
+male(oleksiy_beliy).
+male(vladislav_mykytyk).
+
+% female(x) - x is a woman
+female(mary_shuvar).
+female(yavdoha_korotash).
+female(regina_tomashivska).
+female(nina_klopotiuk).
+
+female(nadia_shuvar).
+female(mary2_shuvar).
+female(mary3_shuvar).
+female(mary4_shuvar).
+female(ivanka_kuza).
+female(ulyana_mospan).
+female(natalia_klopotiuk).
+female(galyna_mykytyk).
+female(lilia_klopotiuk).
+
+female(oksana_shuvar).
+female(ivanka2_kuza).
+female(viktoria_shuvar).
+female(ulyana_klopotiuk).
+female(iryna_beliy).
+female(nadia_mykytyk).
+female(tanua_klopotiuk).
+female(victoria_klopotiuk).
+
+female(solomia_shuvar).
+female(sophia_shuvar).
+female(natalia_shuvar).
+female(marta_shevtsova).
+female(anastasia_beliy).
+female(anastasia2_beliy).
+female(viktoria_mykytyk).
+
+female(marta_beliy).
+female(yana_beliy).
+
+% married(x, y) :- x and y are married
+married(antony_shuvar, mary_shuvar).
+married(mykola_korotash, yavdoha_korotash).
+married(oleksiy_tomashivskiy, regina_tomashivska).
+married(mykola_klopotiuk, nina_klopotiuk).
+
+married(roman_shuvar, nadia_shuvar).
+married(mykhailo_shuvar, mary2_shuvar).
+married(bogdan_shuvar, mary3_shuvar).
+married(zenyk_kuziy, ivanka_kuza).
+married(borys_mospan, ulyana_mospan).
+married(viktor_klopotiuk, natalia_klopotiuk).
+married(bogdan_mykytyk, galyna_mykytyk).
+married(volodimyr_klopotiuk, lilia_klopotiuk).
+
+married(antony2_shuvar, oksana_shuvar).
+married(orest_shuvar, viktoria_shuvar).
+married(volodimyr_beliy, iryna_beliy).
+married(vitaliy_mykytyk, nadia_mykytyk).
+
+married(nazariy_beliy, anastasia_beliy).
+
+%married(X, Y):- married(Y, X).
+
+% parent(x, y) - x is perent of y
+parent(antony_shuvar, roman_shuvar).
+parent(antony_shuvar, mykhailo_shuvar).
+parent(antony_shuvar, bogdan_shuvar).
+parent(mary_shuvar, roman_shuvar).
+parent(mary_shuvar, mykhailo_shuvar).
+parent(mary_shuvar, bogdan_shuvar).
+
+parent(mykola_korotash, mary4_shuvar).
+parent(mykola_korotash, ivanka_kuza).
+parent(yavdoha_korotash, mary4_shuvar).
+parent(yavdoha_korotash, ivanka_kuza).
+
+parent(oleksiy_tomashivskiy, boyan_tomashivskiy).
+parent(oleksiy_tomashivskiy, ulyana_mospan).
+parent(oleksiy_tomashivskiy, natalia_klopotiuk).
+parent(regina_tomashivska, boyan_tomashivskiy).
+parent(regina_tomashivska, ulyana_mospan).
+parent(regina_tomashivska, natalia_klopotiuk).
+
+parent(mykola_klopotiuk, viktor_klopotiuk).
+parent(mykola_klopotiuk, galyna_mykytyk).
+parent(mykola_klopotiuk, volodimyr_klopotiuk).
+parent(nina_klopotiuk, viktor_klopotiuk).
+parent(nina_klopotiuk, galyna_mykytyk).
+parent(nina_klopotiuk, volodimyr_klopotiuk).
+
+parent(bogdan_shuvar, antony2_shuvar).
+parent(mary3_shuvar, antony2_shuvar).
+
+parent(bogdan_shuvar, orest_shuvar).
+parent(mary4_shuvar, orest_shuvar).
+
+parent(zenyk_kuziy, ivanka2_kuza).
+parent(ivanka_kuza, ivanka2_kuza).
+
+parent(viktor_klopotiuk, viktoria_shuvar).
+parent(viktor_klopotiuk, ulyana_klopotiuk).
+parent(natalia_klopotiuk, viktoria_shuvar).
+parent(natalia_klopotiuk, ulyana_klopotiuk).
+
+parent(bogdan_mykytyk, vitaliy_mykytyk).
+parent(bogdan_mykytyk, iryna_beliy).
+parent(galyna_mykytyk, vitaliy_mykytyk).
+parent(galyna_mykytyk, iryna_beliy).
+
+parent(volodimyr_klopotiuk, tanua_klopotiuk).
+parent(volodimyr_klopotiuk, victoria_klopotiuk).
+parent(lilia_klopotiuk, tanua_klopotiuk).
+parent(lilia_klopotiuk, victoria_klopotiuk).
+
+parent(antony2_shuvar, solomia_shuvar).
+parent(oksana_shuvar, solomia_shuvar).
+
+parent(orest_shuvar, sophia_shuvar).
+parent(orest_shuvar, natalia_shuvar).
+parent(viktoria_shuvar, sophia_shuvar).
+parent(viktoria_shuvar, natalia_shuvar).
+
+parent(ulyana_klopotiuk, marta_shevtsova).
+parent(anatoliy_shevtsov, marta_shevtsova).
+
+parent(volodimyr_beliy, nazariy_beliy).
+parent(volodimyr_beliy, oleksiy_beliy).
+parent(volodimyr_beliy, anastasia2_beliy).
+parent(iryna_beliy, nazariy_beliy).
+parent(iryna_beliy, oleksiy_beliy).
+parent(iryna_beliy, anastasia2_beliy).
+
+parent(vitaliy_mykytyk, vladislav_mykytyk).
+parent(nadia_mykytyk, vladislav_mykytyk).
+parent(vitaliy_mykytyk, viktoria_mykytyk).
+parent(nadia_mykytyk, viktoria_mykytyk).
+
+parent(nazariy_beliy, marta_beliy).
+parent(nazariy_beliy, yana_beliy).
+parent(anastasia_beliy, marta_beliy).
+parent(anastasia_beliy, yana_beliy).
+
+/* ruls */
+child(Child, Parent):- parent(Parent, Child).
+
+daughter(Daughter, Parent):- parent(Parent, Daughter), female(Daughter).
+son(Son, Parent):- parent(Parent, Son), male(Son).
+
+mother(Mother, Child):-  parent(Mother, Child), female(Mother).
+father(Father, Child):- parent(Father, Child), male(Father).
+
+mother_inlow(Mother, Child):- married(Child, Women), mother(Mother, Women).
+mother_inlow(Mother, Child):- married(Man, Child), mother(Mother, Man).
+
+father_inlow(Father, Child):- married(Child, Women), father(Father, Women).
+father_inlow(Father, Child):-  married(Man, Child), father(Father, Man).
+
+siblings(Sibling1, Sibling2):- mother(Mother, Sibling2), mother(Mother, Sibling1), father(Father, Sibling2), father(Father, Sibling1), not(Sibling1 = Sibling2).
+brother(Brother, Sibling):- siblings(Brother, Sibling), male(Brother).
+sister(Sister, Sibling):- siblings(Sister, Sibling), female(Sister).
+
+stepbrother(Brother, Sibling):- mother(Mother, Brother), mother(Mother, Sibling), father(Father, Brother), \+father(Father, Sibling).
+stepbrother(Brother, Sibling):- mother(Mother, Brother), \+mother(Mother, Sibling), father(Father, Brother), father(Father, Sibling).
+
+aunt(Aunt, Nephew):- sister(Aunt, Parent), parent(Parent, Nephew).
+uncle(Uncle, Nephew):- brother(Uncle, Parent), parent(Parent, Nephew).
+nephew(Nephew, Aunt):- siblings(Aunt, Parent), son(Nephew, Parent).
+niece(Niece, Aunt):- siblings(Aunt, Parent), daughter(Niece, Parent).
+
+grandparent(GrandParent, Person):- parent(Parent, Person), parent(GrandParent, Parent).
+grandchild(GrandChild, GrandParent):- grandparent(GrandParent, GrandChild).
+grandmother(Grandmother, Person):- grandparent(Grandmother, Person), female(Grandmother).
+grandfather(Granfather, Person):- grandparent(Granfather, Person), male(Granfather).
+
+cousin(Cousin1, Cousin2):- grandparent(GrandParent, Cousin1), grandparent(GrandParent, Cousin2), \+siblings(Cousin1, Cousin2), \+stepbrother(Cousin1, Cousin2), not(Cousin1 = Cousin2).
+cousin(Cousin1, Cousin2):- parent(Parent1, Cousin1), parent(Parent2, Cousin2), cousin(Parent1, Parent2).
+
+ngrandparent(GrandParent, Person):- grandparent(GrandParent, Person).
+ngrandparent(GrandParent, Person):- parent(Parent, Person), ngrandparent(GrandParent, Parent).
+
+ngrandchiild(GrandChild, Person):- ngrandparent(Person, GrandChild).
+
+ancestor(Person, Ancestor):- parent(Ancestor, Person).
+ancestor(Person, Ancestor):- parent(Parent, Person), ancestor(Parent, Ancestor).
+
+descendant(Person, Descendant):- parent(Person, Descendant).
+descendant(Person, Descendant):- parent(Person, Child), descendant(Child, Descendant).
+
+relative(Person1, Person2):- ancestor(Person1, Ancestor), ancestor(Person2, Ancestor).
+relative(Person1, Person2):- ancestor(Person1, Person2).
+relative(Person1, Person2):- ancestor(Person2, Person1).
+relative(Person1, Person2):- married(Person1, Person2).
+relative(Person1, Person2):- married(Person2, Person1).
+
+in_lows(Person, Relative_inlow):- married(Man, Person), relative(Man, Relative_inlow).
+in_lows(Person, Relative_inlow):- married(Person, Man), relative(Man, Relative_inlow).
+
+

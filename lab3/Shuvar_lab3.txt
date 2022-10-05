@@ -1,0 +1,214 @@
+% language_school(name,[course(title, level, teacher(name, surname, salary), [student(name, surname, level)])])
+
+language_school('Lingo', [
+                         course('English for beginers', 'A0',  
+                                teacher('Oksana', 'Oles', 5000),
+                                [
+                                student('Mark', 'Nakonechniy', 'A0'),
+                                student('Orest', 'Nakonechniy', 'A0'),
+                                student('Anastasia', 'Savchenko', 'A1'),
+                                student('Katerina', 'Nakonechna', 'A1')
+                                ]),
+                           
+                          course('English for itermidients', 'A2',  
+                                teacher('Oksana', 'Oles', 7000),
+                                [
+                                student('Nazariy', 'Kolos', 'A2'),
+                                student('Roman', 'Shkretko', 'A2'),
+                                student('Sofia', 'Romanchuk', 'B2'),
+                                student('Sofia', 'Kravchuk', 'B1'),
+                                student('Oksana', 'Nikolenko', 'B1')
+                                ]),
+                           
+                           course('English for upper itermidients', 'B1',  
+                                teacher('Orest', 'Romaniv', 10000),
+                                [
+                                student('Maria', 'Ponnomarenko', 'B2'),
+                                student('Valeria', 'Mahdenko', 'B2'),
+                                student('Stakhiv', 'Rostislav', 'B2')
+                                ]),
+                           
+                          course('English for conversations', 'A2',  
+                                teacher('Orest', 'Romaniv', 10000),
+                                [
+                                student('Sofia', 'Romanchuk', 'B2'),
+                                student('Valeria', 'Mahdenko', 'B2'),
+                                student('Stakhiv', 'Rostislav', 'B2'),
+                                student('Oksana', 'Nikolenko', 'B1')
+                                ])
+                         ]).
+
+language_school('GreenForest', [
+                         course('English Advanced', 'B2',  
+                                teacher('Darina', 'Nikolenko', 10000),
+                                [
+                                student('Marta', 'Chorna', 'B2'),
+                                student('Oksana', 'Konovalenko', 'C1'),
+                                student('Taras', 'Rumezak', 'C2'),
+                                student('Max', 'Kmet', 'C1')
+                                ]),
+                           
+                           course('English for itermidients', 'A2',  
+                                teacher('Darina', 'Nikolenko', 10000),
+                                [
+                                student('Max', 'Petryshyn', 'B1'),
+                                student('Roman', 'Kmyta', 'A2'),
+                                student('Mykola', 'Morhunenko', 'B2')
+                                ]),
+
+                           course('Speaking club', 'A0',  
+                                teacher('Darina', 'Nikolenko', 10000),
+                                [
+                                student('Max', 'Petryshyn', 'B1'),
+                                student('Roman', 'Kmyta', 'A2'),
+                                student('Mykola', 'Morhunenko', 'B2'),
+                                student('Marta', 'Chorna', 'B2'),
+                                student('Oksana', 'Konovalenko', 'C1'),
+                                student('Taras', 'Rumezak', 'C2'),
+                                student('Max', 'Kmet', 'C1')
+                                ])
+                         ]).
+
+language_school('Grade Education Center', [
+                          course('English for itermidients', 'A2',
+                                teacher('Andriy', 'Dopko', 5000),
+                                [
+                                student('Marta', 'Shevtsova', 'A1'),
+                                student('Oksana', 'Konopelniuk', 'B2'),
+                                student('Taras', 'Minchak', 'B1')
+                                ]),
+                           
+                           course('Speaking club', 'A2',  
+                                teacher('Andriy', 'Dopko', 5000),
+                                [
+                                student('Oksana', 'Konopelniuk', 'B2'),
+                                student('Maria', 'Ponnomarenko', 'B2'),
+                                student('Nazariy', 'Kolos', 'A2'),
+                                student('Ostap', 'Lopushanskiy', 'B1')
+                                ]),
+                                            
+                          course('English for starters', 'A0',
+                                  teacher('Stephan', 'Banah', 5000),
+                                  [
+                                  student('Oksana', 'Padziy', 'A1'),
+                                  student('Max', 'Karatajev', 'A1'),
+                                  student('Bogdan', 'Kulik', 'A0')
+                                  ])
+                         
+                         ]).
+
+
+
+in(X,[X]):-!.
+in(X,[_|T]):- in(X,T).
+in(X,[X|_]).
+
+% 1 (Список всіх курсів школи)
+course_in_school(Course, SchoolName):- language_school(SchoolName, Courses),
+							in(course(Course, _, _, _), Courses).
+
+courses_of_school(SchoolName, C):- findall(A, course_in_school(A, SchoolName), C).
+
+% 2 (Список всіх школ)
+schools(C):- findall(A, language_school(A, _), C).
+
+% 3 (Список усіх учнів рівня advanced)
+contains(Head, [Head|_]).
+contains(Head, [_|Tail]) :- contains(Head, Tail).
+
+distinct([], [], _).
+distinct([Head|Tail], [Head|Res], List) :- 
+    not(contains(Head, List)), 
+    distinct(Tail, Res, [Head|List]).
+distinct([Head|Tail], Res, List) :- 
+    contains(Head, List), 
+    distinct(Tail, Res, List).
+
+set(List, Set) :- distinct(List, Set, []).
+
+level_filter(student_school(Student, SchoolName)):- language_school(SchoolName, Courses),
+    	in(course(_, _, _, Students), Courses),
+    	in(student(FirstName, Surname, Level), Students), 
+        atom_concat(FirstName, ' ', FirstNameB),
+        atom_concat(FirstNameB, Surname, Student),
+    	(Level == 'C1' ; Level == 'C2').
+
+advanced_level_students(CNew):- findall(A, level_filter(A), C), set(C, CNew).  
+
+
+% 4 (Список усіх курсів рівня advanced)
+course_level_filter(course_school(Course, SchoolName)):- language_school(SchoolName, Courses),
+    	in(course(Course, Level, _, _), Courses),
+    	(Level == 'B2';Level == 'C1' ; Level == 'C2').
+
+advanced_level_cources(C):- findall(A, course_level_filter(A), C).
+
+
+% 5 (Найпопулярніший курс екстремальними значеннями)
+array_length([],0).
+array_length([_|T], N):- array_length(T, M), N is M + 1.
+
+the_most_popular_cource((Course, School)):- language_school(School, Cources),
+    	in(course(Course, _, _, Students), Cources),
+		array_length(Students, L),
+		\+ (language_school(_, Cources2),
+		in(course(_, _, _, Students2), Cources2),
+		array_length(Students2, L2), L2 > L).
+
+
+% 6 (Зарплата викладача)
+elements_sum([Head|[]], Head).
+elements_sum([Head|Tail], Head + Temp_sum):- 
+    elements_sum(Tail, Temp_sum).
+
+get_teacher_salary(Surname, Salary):- language_school(_, Cources),
+    	in(course(_, _, teacher(_, Surname, Salary), _), Cources).
+
+
+get_teacher_salaries(Surname, Sum):- findall(Salary, get_teacher_salary(Surname, Salary), C),
+    elements_sum(C, Sum).
+
+% 6 (Кількість студентів курсу )
+cource_students_amount(Course, Amount):- language_school(_, Cources),
+    	in(course(Course, _, _, Students), Cources),
+		array_length(Students, Amount).
+
+% 7 (Курси посортовані за кількістю студентів)
+% вставка елемента у впорядкований список.
+insert_in_sorted(El, [], [El|[]]).
+insert_in_sorted(El, [Head|Tail], [El, Head|Tail]):- bigger(El, Head), !.
+insert_in_sorted(El, [Head|Tail], [Head |LongerTail]):- insert_in_sorted(El, Tail, LongerTail).
+
+
+% впорядкування елементів числового списку.
+mysort([],[]).
+mysort([Head|[]], [Head|[]]).
+mysort([Head|Tail], List):- 
+    mysort(Tail, SortedT), 
+    insert_in_sorted(Head, SortedT, List).
+    
+courses(Course, Amount):- language_school(_, Cources), 
+    in(course(Course, _, _, Students), Cources), 
+    array_length(Students, Amount).
+  
+bigger((_, Amount), (_, Amount2)):- Amount < Amount2.
+all_courses(SortedL):- findall((Course, Amount), courses(Course, Amount), L),
+    mysort(L, SortedL).
+
+
+% 7 (Вивід назв курсів з кількістю студентів більшою ніж у 'English for itermidients')
+finish('English for itermidients').
+write_top(Course):- all_courses(SortedL), 
+    in((Course, Amount), SortedL),
+    write((Course, Amount)), nl, finish(Course).
+
+
+% 8 (Кількість студентів в школі)
+students_in_courses([], 0).
+students_in_courses([course(_,_,_,Students)|Tail], Res) :-
+	students_in_courses(Tail, Rs1),
+    array_length(Students, Rs2),
+	Res is Rs1 + Rs2.
+
+students_in_school(A, Res):- language_school(A, Courses), students_in_courses(Courses, Res).
+
