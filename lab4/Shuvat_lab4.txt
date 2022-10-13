@@ -70,7 +70,7 @@ check_statements(Statements, Solution) :-
     length(Statements, N),
     length(Solution, N),
     create(Solution),
-    include(==(knight), Solution, Knaves),
+    include(==(knave), Solution, Knaves),
     length(Knaves, N_knaves),
     validate_lst(N_knaves, Statements, Solution).
 
