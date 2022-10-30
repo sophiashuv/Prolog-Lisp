@@ -1,0 +1,63 @@
+(defun PUT (SYMBOL KEY VALUE)
+(SETF (GET SYMBOL KEY) VALUE))
+
+
+(PUT 'me 'name 'Sophia)
+(PUT 'me 'surname 'Shuvar)
+(PUT 'me 'occupation 'student)
+(PUT 'me 'age 21)
+(PUT 'me 'birthday '(24 11 2000))
+(PUT 'me 'university "Ivan Franko National University of Lviv")
+(PUT 'me 'group '(PMI 43)
+)
+(PUT 'me 'tehnologystack (CONS 'c++ '(python csharp java prolog pharo)))
+
+
+(defun name (SYMBOL)
+(GET SYMBOL 'name))
+
+(defun surname (SYMBOL)
+(GET SYMBOL 'surname))
+
+(defun birthday (SYMBOL)
+(GET SYMBOL 'birthday))
+
+(defun birthdayMonth (SYMBOL)
+(CAR (CDR (GET SYMBOL 'birthday))))
+
+(defun birthdayYear (SYMBOL)
+(CAR (CDR (CDR (GET SYMBOL 'BIRTHDAY)))))
+
+(defun age (SYMBOL)
+(GET SYMBOL 'age))
+
+(defun occupation (SYMBOL)
+(GET SYMBOL 'occupation))
+
+(defun university (SYMBOL)
+(GET SYMBOL 'university))
+
+(defun studyYear (SYMBOL)
+(floor (CAR(CDR (GET SYMBOL 'group))) 10))
+
+(defun group (SYMBOL)
+(GET SYMBOL 'group))
+
+(defun tehnologystack (SYMBOL)
+(GET SYMBOL 'tehnologystack))
+
+(print (SYMBOL-PLIST 'me))
+(print (name 'me))
+(print (surname 'me))
+(print (birthday 'me))
+(print (birthdayMonth 'me))
+(print (birthdayYear 'me))
+(print (age 'me))
+(print (occupation 'me))
+(print (university 'me))
+(print (studyYear 'me))
+(print (group 'me))
+(print (tehnologystack 'me))
+
+
+
