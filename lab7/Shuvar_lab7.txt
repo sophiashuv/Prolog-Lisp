@@ -63,7 +63,7 @@
 	)
 )
 
-(princ "task 2 кількість підсписків: ")
+(princ "task 2  кількість елементів: ")
 (print (count-len '(1 3 5 6 (7 8))))
 (terpri)
 
@@ -79,7 +79,7 @@
 	)
 )
 
-(princ "task 2 кількість елементів : ")
+(princ "task 2  кількість підсписків: ")
 (PRINT (count-sublists '(1 (2) (4 (4 5))) ))
 (terpri)
 (PRINT (count-sublists '(1 (2) (4 (6 (5 6 7))) (3)) ))
