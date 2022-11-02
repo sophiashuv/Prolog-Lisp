@@ -161,5 +161,45 @@
 (PRINT(BINARY 19))
 (terpri)
 
-	
+;task4: (EQ2 a b c) – розв’язати квадратне рівняння
+(DEFUN EQ2 (a b c)
+  (setq d (- (* b b) (* a c 4)))
+    (cond ((< d 0) '())
+          ((eql d 0) (/ ( - b) (* 2 a)))
+          ((cons (/ (- (* b -1) (SQRT d)) (* 2 a))
+                   (/ (+ (* b -1) (SQRT d)) (* 2 a))))))
+(princ "task 4 розв’язати квадратне рівняння: ")
+(PRINT(EQ2  1 -5 6))
+(terpri)
+
+; task 8:  (MATR_GET m i j) – повернути значення m[i][j], де m – матриця n * n, i<=n, j<=n..
+(defun MATR_GET (m i j)
+                   (loop while (> i 0)
+                         do( setq i (- i 1) m (cdr m))) (setq m (car m))
+                   (loop while (> j 0)
+                         do (setq j (- j 1) m (cdr m)))
+                   (car m))
+
+(princ "task 8 повернути значення m[i][j]: ")
+(PRINT(MATR_GET '((1 3 4) (4 5 6) (7 8 9)) 2 1))
+(terpri)
+
+; task 8:  (GENMATR0 i j) – згенерувати нульову матрицю i * j.
+(DEFUN GENROW0 (n)
+    (cond
+        ((eql n 0) nil)
+        ((cons 0 (GENROW0 (- n 1))))
+    )
+)
+
+(defun GENMATR0 (i j) (setq m '() row (GENROW0 j))
+                   (loop while (> i 0)
+                         do ( setq i (- i 1) m (cons row m)))
+                   m)
+
+(princ "task 8 згенерувати нульову матрицю i * j: ")
+(PRINT(GENMATR0 2 4))
+(terpri)	
+
+; task 8:  (GENMATR0 i j) – згенерувати нульову матрицю i * j.
 		
