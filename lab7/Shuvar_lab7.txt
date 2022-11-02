@@ -147,7 +147,7 @@
 (terpri)
 
 ; task 4:  (BINARY n) – кількість знаків у двійковому представленні числа n.
-(defun BINARY (N)      
+(defun BINARY (n)      
     (loop with res = 0
         if (evenp n) do (setq res (+ 1 res))
         else do (setq res (+ 1 res)) and do (setq n (- n 1))
