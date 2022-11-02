@@ -201,5 +201,31 @@
 (PRINT(GENMATR0 2 4))
 (terpri)	
 
-; task 8:  (GENMATR0 i j) – згенерувати нульову матрицю i * j.
-		
+
+; task 8:  (MATR_CHANGE m i j value) – повернути матрицю, у якій m[i][j]=value.
+
+(defun replace-nth (n lst new)
+    (cond
+        ((null lst)(list new))
+        ((eql n 0) (cons new (cdr lst)))
+        ((> n 0) (cons (car lst)
+            (replace-nth (- n 1)(cdr lst) new)))
+        ((error "Unhandled values.")))
+        )
+
+(defun MATR_CHANGE (m i j value)
+    (setq mm m)
+    (setq ii i)
+    (loop while (> i 0)
+                do( setq i (- i 1) mm (cdr mm)))
+    (replace-nth ii m (replace-nth j (car mm) value))
+    )
+    
+
+(princ "task 8 повернути матрицю, у якій m[i][j]=value: ")
+(setq data '((a b c) (d e f) (g h ij)))
+(setq data (MATR_CHANGE data 1 2 pi))
+(print data)
+(terpri)
+
+
