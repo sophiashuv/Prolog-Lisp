@@ -49,7 +49,7 @@
             (setq in2 (FUNCALL type_of_integration a b n2 f))
             (setq n n2)
             (setq n2 (* 2 n2))
-        (when (< (abs (- in in2)) eps) (return in2))))
+        (when (< (/ (abs (- in in2)) 15) eps) (return in2))))
                
 (print(accuracy_integration 'SimpsonIntegrationLoop (LAMBDA (X)(sin x)) 0 5 0.001))
 (print(accuracy_integration 'SimpsonIntegrationRecursion (LAMBDA (X)(sin x)) 0 5 0.001))
